@@ -10,7 +10,7 @@ resource "ucs_service_profile" "the-server-name" {
   name                     = "the-server-name"
   target_org               = "some-target-org"
   service_profile_template = "some-service-profile-template"
-  vNIC {
+  vnic {
     name  = "eth0"
     cidr = "1.2.3.4/24"
   }
