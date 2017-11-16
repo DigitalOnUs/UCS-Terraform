@@ -5,9 +5,9 @@ import (
 	"net"
 	"sync"
 
+	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/micdoher/terraform-provider-ucs/ipman"
 	"github.com/micdoher/terraform-provider-ucs/ucsclient"
-	"github.com/hashicorp/terraform/helper/schema"
 )
 
 type sessionCallback func(*ucsclient.UCSClient) error
@@ -43,7 +43,7 @@ func resourceUcsServiceProfile() *schema.Resource {
 				Optional:    true,
 				Description: "Freestyle metadata for your resource",
 			},
-			"vNIC": &schema.Schema{
+			"vnic": &schema.Schema{
 				Type:     schema.TypeList,
 				Required: true,
 				Elem: &schema.Resource{
