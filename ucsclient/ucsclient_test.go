@@ -12,7 +12,7 @@ import (
 	"testing"
 
 	utils "github.com/ContainerSolutions/go-utils"
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucs/ucsclient/fixtures"
+	"github.com/DigitalOnUs/terraform-provider-ucs/ucsclient/fixtures"
 )
 
 type StubHTTPClient struct {
