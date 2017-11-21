@@ -14,7 +14,7 @@ import (
 	"os"
 	"strings"
 
-	ucs "github.com/DigitalOnUS/terraform-provider-ucs/ucs/ucsclient/ucsinternal"
+	ucs "github.com/DigitalOnUS/terraform-provider-ucs/ucsclient/ucsinternal"
 	"github.com/micdoher/GoUtils"
 	xmlpath "gopkg.in/xmlpath.v2"
 )

@@ -1,7 +1,7 @@
 package ucs
 
 import (
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucs/ucsclient"
+	"github.com/DigitalOnUs/terraform-provider-ucs/ucsclient"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )

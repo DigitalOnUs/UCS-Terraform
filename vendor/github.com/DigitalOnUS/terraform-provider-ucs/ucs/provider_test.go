@@ -27,14 +27,6 @@ func TestProvider_impl(t *testing.T) {
 	var _ terraform.ResourceProvider = Provider()
 }
 
-func TestproviderConfigure(t *testing.T) {
-	resourceData := &schema.ResourceData{}
-	client, err := providerConfigure(resourceData)
-	if err != nil {
-		t.Errorf("providerConfigure() returned unexpected error %v", err)
-	}
+func testAccPrecheck(t *testing.T) {
 
-	if client == nil {
-		t.Errorf("providerConfigure() returned nil client; expected an instance of a UCSClient")
-	}
 }
