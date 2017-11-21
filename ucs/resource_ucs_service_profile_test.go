@@ -2,18 +2,45 @@ package ucs
 
 import (
 	"testing"
+
+	"github.com/hashicorp/terraform/helper/resource"
 )
 
-func TestValidateCIDR(t *testing.T) {
-	cidr := "1.2.3.4/8"
-	err := validateCIDR(cidr)
-	if err != nil {
-		t.Errorf("CIDR %s returned error: %s", cidr, err)
-	}
+func init() {
+	resource.AddTestSweepers("ucs_service_profile", &resource.Sweeper{
+		Name: "ucs_service_profile",
+		F:    testSweepProfiles,
+	})
 
-	cidr = "hola"
-	err = validateCIDR(cidr)
-	if err == nil {
-		t.Errorf(`Error expected but got nil with cidr = "%s"`, cidr)
-	}
+}
+
+func testSweepProfiles(region string) error {
+	return nil
+}
+
+func TestAccUCSProfile(t *testing.T) {
+	resource.Test(t, resource.TestCase{
+		PreCheck:  func() { testAccPrecheck(t) },
+		Providers: testAccProviders,
+		// CheckDestroy: testAccUCSCProfileDestroy,
+		Steps: []resource.TestStep{
+			{
+				Config: testAccCheckUCSProfileConfig(),
+				Check:  resource.ComposeTestCheckFunc(),
+			},
+		},
+	})
+}
+
+func testAccCheckUCSProfileConfig() string {
+	return `
+	resource "ucs_service_profile" "the-server-name" {
+  	name                     = "the-server-name"
+  	target_org               = "some-target-org"
+  	service_profile_template = "some-service-profile-template"
+  	vNIC {
+    	name  = "eth0"
+    	cidr = "1.2.3.4/24"
+  	}
+	}`
 }
