@@ -26,7 +26,9 @@ func TestAccUCSProfile(t *testing.T) {
 		Steps: []resource.TestStep{
 			{
 				Config: testAccCheckUCSProfileConfig(),
-				Check:  resource.ComposeTestCheckFunc(),
+				Check: resource.ComposeTestCheckFunc(resource.TestCheckResourceAttr(
+					"cloudscale_server.basic", "flavor_slug", "flex-2"),
+				),
 			},
 		},
 	})

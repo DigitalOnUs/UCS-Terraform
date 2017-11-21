@@ -10,8 +10,8 @@
 [[projects]]
   branch = "update_ucs_client"
   name = "github.com/DigitalOnUS/terraform-provider-ucs"
-  packages = ["ucs/ucsclient/ucsinternal"]
-  revision = "91a02a905d15c536a19d9491bd80133fe3830fae"
+  packages = ["ucsclient/ucsinternal"]
+  revision = "4eee043a6a71caf92e8b29c4402a92c02a9cfe62"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
@@ -40,8 +40,8 @@
 [[projects]]
   name = "github.com/aws/aws-sdk-go"
   packages = ["aws","aws/awserr","aws/awsutil","aws/client","aws/client/metadata","aws/corehandlers","aws/credentials","aws/credentials/ec2rolecreds","aws/credentials/endpointcreds","aws/credentials/stscreds","aws/defaults","aws/ec2metadata","aws/endpoints","aws/request","aws/session","aws/signer/v4","internal/shareddefaults","private/protocol","private/protocol/query","private/protocol/query/queryutil","private/protocol/rest","private/protocol/restxml","private/protocol/xml/xmlutil","service/s3","service/sts"]
-  revision = "e4f7e38b704e3ed0acc4a7f8196b777696f6f1f3"
-  version = "v1.12.30"
+  revision = "a32b1dcd091264b5dee7b386149b6cc3823395c9"
+  version = "v1.12.31"
 
 [[projects]]
   branch = "master"
@@ -280,7 +280,7 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "11c7f9e547da6db876260ce49ea7536985904c9b"
+  revision = "891aceb7c239e72692819142dfca057bdcbfcb96"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -297,6 +297,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "dc97bf1880022a6d5dfb77cbdf91e1257c9fb700f62d17c0c6f62cb9959fc0a7"
+  inputs-digest = "81d77677d8f4b8337385f28012469a7139d271053bd69ecacac6a356ad7e895d"
   solver-name = "gps-cdcl"
   solver-version = 1

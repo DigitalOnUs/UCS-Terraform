@@ -11,7 +11,7 @@
   branch = "update_ucs_client"
   name = "github.com/DigitalOnUS/terraform-provider-ucs"
   packages = ["ucsclient/ucsinternal"]
-  revision = "4eee043a6a71caf92e8b29c4402a92c02a9cfe62"
+  revision = "47979e2cded45d53b16ed1f247cd04ab9f25fab1"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
