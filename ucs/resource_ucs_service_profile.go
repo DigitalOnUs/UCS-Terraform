@@ -17,11 +17,10 @@ var sessionMutex = sync.Mutex{}
 
 func resourceUcsServiceProfile() *schema.Resource {
 	return &schema.Resource{
-		SchemaVersion: 1,
-		Create:        resourceUcsServiceProfileCreate,
-		Read:          resourceUcsServiceProfileRead,
-		Update:        resourceUcsServiceProfileUpdate,
-		Delete:        resourceUcsServiceProfileDelete,
+		Create: resourceUcsServiceProfileCreate,
+		Read:   resourceUcsServiceProfileRead,
+		Update: resourceUcsServiceProfileUpdate,
+		Delete: resourceUcsServiceProfileDelete,
 		Schema: map[string]*schema.Schema{
 			"service_profile_template": &schema.Schema{
 				Type:     schema.TypeString,
@@ -45,7 +44,7 @@ func resourceUcsServiceProfile() *schema.Resource {
 				Description: "Freestyle metadata for your resource",
 			},
 			"vnic": &schema.Schema{
-				Type:     schema.TypeList,
+				Type:     schema.TypeSet,
 				Required: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -83,17 +82,16 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 		Hierarchical: false,
 	}
 
-	vnics := d.Get("vNIC")
-	fmt.Printf("%+v\n", vnics)
-	vnicList := vnics.([]interface{})
-	for _, item := range vnicList {
+	vnics := d.Get("vnic").(*schema.Set).List()
+	fmt.Printf("vnics %+v\n", vnics)
+	for _, item := range vnics {
 		vnic := item.(map[string]interface{})
 		sp.VNICs = append(sp.VNICs, ucsclient.VNIC{
 			Name: vnic["name"].(string),
 			CIDR: vnic["cidr"].(string),
 		})
 
-		// Validate the vNIC's CIDR and return error if anything.
+		// Validate the vnic's CIDR and return error if anything.
 		err := validateCIDR(sp.VNICs[len(sp.VNICs)-1].CIDR)
 		if err != nil {
 			return err
@@ -124,9 +122,9 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 			d.SetPartial("name")
 		}
 
-		if d.HasChange("vNIC") {
+		if d.HasChange("vnic") {
 			vnics := make([]map[string]string, len(sp.VNICs))
-			// Assign an IP to each of the vNICs in the Service Profile.
+			// Assign an IP to each of the vnics in the Service Profile.
 			for i, vnic := range sp.VNICs {
 				ip, err := ipman.GenerateIP("inventory-"+vnic.Name, vnic.CIDR)
 				if err != nil {
@@ -140,8 +138,8 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 					"cidr": vnic.CIDR,
 				}
 			}
-			d.Set("vNIC", vnics)
-			d.SetPartial("vNIC")
+			d.Set("vnic", vnics)
+			d.SetPartial("vnic")
 		}
 
 		d.Partial(false)
@@ -182,21 +180,21 @@ func resourceUcsServiceProfileRead(d *schema.ResourceData, meta interface{}) err
 			return nil
 		}
 
-		// Fetch vNIC info from ResourceData
+		// Fetch vnic info from ResourceData
 		vNicsFromResourceData := fetchVnicsFromResourceData(d)
 
-		// Merge the UCS vNIC info with the ResourceData vNIC info
+		// Merge the UCS vnic info with the ResourceData vnic info
 		vnics := mergeVnics(vNicsFromResourceData, sp.VNICs)
 
 		// Update the information related to the service profile fetched from UCS in Terraform.
 		d.Set("name", sp.Name)
 		d.Set("service_profile_template", sp.Template)
 		d.Set("target_org", sp.TargetOrg)
-		d.Set("vNIC", vnics)
+		d.Set("vnic", vnics)
 
 		d.SetConnInfo(map[string]string{
 			"type": "ssh",
-			"host": d.Get("vNIC.0.ip").(string),
+			"host": d.Get("vnic.0.ip").(string),
 		})
 
 		client.Logger.Debug("Exiting resourceUcsServiceProfileRead(...)\n")
@@ -242,7 +240,7 @@ func resourceUcsServiceProfileDelete(d *schema.ResourceData, meta interface{}) e
 }
 
 func fetchVnicsFromResourceData(d *schema.ResourceData) (ret []ucsclient.VNIC) {
-	vnics := d.Get("vNIC").([]interface{})
+	vnics := d.Get("vnic").([]interface{})
 	for _, item := range vnics {
 		vnic := item.(map[string]interface{})
 		ret = append(ret, ucsclient.VNIC{

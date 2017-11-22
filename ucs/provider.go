@@ -12,18 +12,21 @@ func Provider() terraform.ResourceProvider {
 			"ip_address": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("UCS_IP_ADDRESS", nil),
 				Description: "UCS Manager IP address or CIMC IP address.",
 			},
 
 			"username": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("UCS_USERNAME", nil),
 				Description: "The user's name to access the UCS Management.",
 			},
 
 			"password": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("UCS_PASSWORD", nil),
 				Description: "The password to access the UCS Management.",
 			},
 
@@ -31,6 +34,7 @@ func Provider() terraform.ResourceProvider {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Default:     true,
+				DefaultFunc: schema.EnvDefaultFunc("UCS_TSLINSECURESKIPVERIFY", nil),
 				Description: "The TSL insecure skip verify",
 			},
 
@@ -38,6 +42,7 @@ func Provider() terraform.ResourceProvider {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     1,
+				DefaultFunc: schema.EnvDefaultFunc("UCS_LOG_LEVEL", nil),
 				Description: "The log level",
 			},
 
@@ -45,6 +50,7 @@ func Provider() terraform.ResourceProvider {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
+				DefaultFunc: schema.EnvDefaultFunc("UCS_LOG_FILENAME", nil),
 				Description: "The log filename",
 			},
 		},
@@ -59,7 +65,7 @@ func Provider() terraform.ResourceProvider {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	config := ucsclient.Config{
-		AppName:               "UCS",
+		AppName:               "ucs",
 		IpAddress:             d.Get("ip_address").(string),
 		Username:              d.Get("username").(string),
 		Password:              d.Get("password").(string),

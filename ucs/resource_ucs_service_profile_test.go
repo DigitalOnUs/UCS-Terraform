@@ -27,7 +27,7 @@ func TestAccUCSProfile(t *testing.T) {
 			{
 				Config: testAccCheckUCSProfileConfig(),
 				Check: resource.ComposeTestCheckFunc(resource.TestCheckResourceAttr(
-					"cloudscale_server.basic", "flavor_slug", "flex-2"),
+					"ucs_server_profile.test_server", "name", "test_server"),
 				),
 			},
 		},
@@ -36,11 +36,11 @@ func TestAccUCSProfile(t *testing.T) {
 
 func testAccCheckUCSProfileConfig() string {
 	return `
-	resource "ucs_service_profile" "the-server-name" {
-  	name                     = "the-server-name"
+	resource "ucs_service_profile" "test_server" {
+  	name                     = "test_server"
   	target_org               = "some-target-org"
   	service_profile_template = "some-service-profile-template"
-  	vNIC {
+  	vnic {
     	name  = "eth0"
     	cidr = "1.2.3.4/24"
   	}
