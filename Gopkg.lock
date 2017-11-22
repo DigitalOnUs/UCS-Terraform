@@ -11,7 +11,7 @@
   branch = "update_ucs_client"
   name = "github.com/DigitalOnUS/terraform-provider-ucs"
   packages = ["ucsclient/ucsinternal"]
-  revision = "47979e2cded45d53b16ed1f247cd04ab9f25fab1"
+  revision = "c3d352dcbd512893673dd2c839399ca085dde00a"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
@@ -268,7 +268,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "328643532ee3c60c099171d4ce2cad0ca0354ca9"
+  revision = "82aafbf43bf885069dc71b7e7c2f9d7a614d47da"
 
 [[projects]]
   branch = "master"
@@ -284,9 +284,9 @@
 
 [[projects]]
   name = "google.golang.org/grpc"
-  packages = [".","balancer","codes","connectivity","credentials","grpclb/grpc_lb_v1/messages","grpclog","health","health/grpc_health_v1","internal","keepalive","metadata","naming","peer","resolver","stats","status","tap","transport"]
-  revision = "401e0e00e4bb830a10496d64cd95e068c5bf50de"
-  version = "v1.7.3"
+  packages = [".","balancer","balancer/roundrobin","codes","connectivity","credentials","encoding","grpclb/grpc_lb_v1/messages","grpclog","health","health/grpc_health_v1","internal","keepalive","metadata","naming","peer","resolver","resolver/dns","resolver/passthrough","stats","status","tap","transport"]
+  revision = "5a9f7b402fe85096d2e1d0383435ee1876e863d0"
+  version = "v1.8.0"
 
 [[projects]]
   branch = "v2"
