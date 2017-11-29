@@ -1,4 +1,4 @@
-export UCS_IP_ADDRESS="172.16.63.134"
+export UCS_IP_ADDRESS="172.16.63.40"
 export UCS_USERNAME="ucspe"
 export UCS_PASSWORD="ucspe"
 export UCS_TSLINSECURESKIPVERIFY=true

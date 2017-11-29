@@ -177,7 +177,7 @@ func resourceUcsServiceProfileRead(d *schema.ResourceData, meta interface{}) err
 		// We tell Terraform so by setting its id to a blank string.
 		if sp == nil {
 			d.SetId("")
-			return nil
+			return fmt.Errorf("Service Profile: %s", "No longer exists")
 		}
 
 		// Fetch vnic info from ResourceData

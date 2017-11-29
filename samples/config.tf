@@ -9,7 +9,7 @@ provider "ucs" {
 
 resource "ucs_service_profile" "master-server" {
   name                     = "Server 3"
-  target_org               = "root-org"
+  target_org               = "org-root"
   service_profile_template = "terraformprofiletemplate"
   metadata { # This field is pretty much free style. Values must always be strings.
     role             = "master" # This is useful when creating a Mantl cluster
@@ -17,7 +17,7 @@ resource "ucs_service_profile" "master-server" {
     foo              = "bar"
   }
   vnic {
-  name  = "eth0"
-  cidr = "1.2.3.4/24"
-}
+    name  = "eth0"
+    cidr = "1.2.3.4/24"
+  }
 }

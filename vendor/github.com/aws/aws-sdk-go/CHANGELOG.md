@@ -1,3 +1,93 @@
+Release v1.12.36 (2017-11-29)
+===
+
+### Service Client Updates
+* `service/DeepInsight`: Adds new service
+* `service/IronmanRuntime`: Adds new service
+* `service/Orchestra - Laser`: Adds new service
+* `service/SageMaker`: Adds new service
+* `service/Shine`: Adds new service
+* `service/archived.kinesisvideo`: Adds new service
+* `service/data.kinesisvideo`: Adds new service
+* `service/dynamodb`: Updates service API and documentation
+  * Amazon DynamoDB now supports the following features: Global Table and On-Demand Backup. Global Table is a fully-managed, multi-region, multi-master database. DynamoDB customers can now write anywhere and read anywhere with single-digit millisecond latency by performing database operations closest to where end users reside. Global Table also enables customers to disaster-proof their applications, keeping them running and data accessible even in the face of natural disasters or region disruptions. Customers can set up Global Table with just a few clicks in the AWS Management Console-no application rewrites required. On-Demand Backup capability is to protect data from loss due to application errors, and meet customers' archival needs for compliance and regulatory reasons. Customers can backup and restore their DynamoDB table data anytime, with a single-click in the AWS management console or a single API call. Backup and restore actions execute with zero impact on table performance or availability. For more information, see the Amazon DynamoDB Developer Guide.
+* `service/ecs`: Updates service API and documentation
+  * Amazon Elastic Container Service (Amazon ECS) released a new launch type for running containers on a serverless infrastructure. The Fargate launch type allows you to run your containerized applications without the need to provision and manage the backend infrastructure. Just register your task definition and Fargate launches the container for you.
+* `service/glacier`: Updates service API and documentation
+  * This release includes support for Glacier Select, a new feature that allows you to filter and analyze your Glacier archives and store the results in a user-specified S3 location.
+* `service/greengrass`: Updates service API and documentation
+  * Greengrass OTA feature allows updating Greengrass Core and Greengrass OTA Agent. Local Resource Access feature allows Greengrass Lambdas to access local resources such as peripheral devices and volumes.
+* `service/iot`: Updates service API and documentation
+  * This release adds support for a number of new IoT features, including AWS IoT Device Management (Jobs, Fleet Index and Thing Registration), Thing Groups, Policies on Thing Groups, Registry & Job Events, JSON Logs, Fine-Grained Logging Controls, Custom Authorization and AWS Service Authentication Using X.509 Certificates.
+* `service/kinesisvideo`: Adds new service
+  * Announcing Amazon Kinesis Video Streams, a fully managed video ingestion and storage service. Kinesis Video Streams makes it easy to securely stream video from connected devices to AWS for machine learning, analytics, and processing. You can also stream other time-encoded data like RADAR and LIDAR signals using Kinesis Video Streams.
+* `service/rekognition`: Updates service API, documentation, and paginators
+  * This release introduces Amazon Rekognition support for video analysis.
+* `service/s3`: Updates service API and documentation
+  * This release includes support for Glacier Select, a new feature that allows you to filter and analyze your Glacier storage class objects and store the results in a user-specified S3 location.
+
+Release v1.12.35 (2017-11-29)
+===
+
+### Service Client Updates
+* `service/AmazonMQ`: Adds new service
+* `service/GuardDuty`: Adds new service
+* `service/apigateway`: Updates service API and documentation
+  * Changes related to CanaryReleaseDeployment feature. Enables API developer to create a deployment as canary deployment and test API changes with percentage of customers before promoting changes to all customers.
+* `service/batch`: Updates service API and documentation
+  * Add support for Array Jobs which allow users to easily submit many copies of a job with a single API call. This change also enhances the job dependency model to support N_TO_N and sequential dependency chains. The ListJobs and DescribeJobs APIs now have the ability to list or describe the status of entire Array Jobs or individual elements within the array.
+* `service/cognito-idp`: Updates service API and documentation
+* `service/deepdish`: Adds new service
+  * AWS AppSync is an enterprise-level, fully managed GraphQL service with real-time data synchronization and offline programming features.
+* `service/ec2`: Updates service API and documentation
+  * Adds the following updates: 1. You are now able to host a service powered by AWS PrivateLink to provide private connectivity to other VPCs. You are now also able to create endpoints to other services powered by PrivateLink including AWS services, Marketplace Seller services or custom services created by yourself or other AWS VPC customers. 2. You are now able to save launch parameters in a single template that can be used with Auto Scaling, Spot Fleet, Spot, and On Demand instances. 3. You are now able to launch Spot instances via the RunInstances API, using a single additional parameter. RunInstances will response synchronously with an instance ID should capacity be available for your Spot request. 4. A simplified Spot pricing model which delivers low, predictable prices that adjust gradually, based on long-term trends in supply and demand. 5. Amazon EC2 Spot can now hibernate Amazon EBS-backed instances in the event of an interruption, so your workloads pick up from where they left off. Spot can fulfill your request by resuming instances from a hibernated state when capacity is available.
+* `service/lambda`: Updates service API and documentation
+  * Lambda aliases can now shift traffic between two function versions, based on preassigned weights.
+
+Release v1.12.34 (2017-11-27)
+===
+
+### Service Client Updates
+* `service/data.mediastore`: Adds new service
+* `service/mediaconvert`: Adds new service
+  * AWS Elemental MediaConvert is a file-based video conversion service that transforms media into formats required for traditional broadcast and for internet streaming to multi-screen devices.
+* `service/medialive`: Adds new service
+  * AWS Elemental MediaLive is a video service that lets you easily create live outputs for broadcast and streaming delivery.
+* `service/mediapackage`: Adds new service
+  * AWS Elemental MediaPackage is a just-in-time video packaging and origination service that lets you format highly secure and reliable live outputs for a variety of devices.
+* `service/mediastore`: Adds new service
+  * AWS Elemental MediaStore is an AWS storage service optimized for media. It gives you the performance, consistency, and low latency required to deliver live and on-demand video content. AWS Elemental MediaStore acts as the origin store in your video workflow.
+
+Release v1.12.33 (2017-11-22)
+===
+
+### Service Client Updates
+* `service/acm`: Updates service API and documentation
+  * AWS Certificate Manager now supports the ability to import domainless certs and additional Key Types as well as an additional validation method for DNS.
+* `aws/endpoints`: Updated Regions and Endpoints metadata.
+
+Release v1.12.32 (2017-11-22)
+===
+
+### Service Client Updates
+* `service/apigateway`: Updates service API and documentation
+  * Add support for Access logs and customizable integration timeouts
+* `service/cloudformation`: Updates service API and documentation
+  * 1) Instance-level parameter overrides (CloudFormation-StackSet feature): This feature will allow the customers to override the template parameters on specific stackInstances. Customers will also have ability to update their existing instances with/without parameter-overrides using a new API "UpdateStackInstances"                                                                                                                                                                                                                                                         2) Add support for SSM parameters in CloudFormation - This feature will allow the customers to use Systems Manager parameters in CloudFormation templates. They will be able to see values for these parameters in Describe APIs.
+* `service/codebuild`: Updates service API and documentation
+  * Adding support for accessing Amazon VPC resources from AWS CodeBuild, dependency caching and build badges.
+* `service/elasticmapreduce`: Updates service API and documentation
+  * Enable Kerberos on Amazon EMR.
+* `aws/endpoints`: Updated Regions and Endpoints metadata.
+* `service/rekognition`: Updates service API and documentation
+  * This release includes updates to Amazon Rekognition for the following APIs. The new DetectText API allows you to recognize and extract textual content from images. Face Model Versioning has been added to operations that deal with face detection.
+* `service/shield`: Updates service API, documentation, and paginators
+  * The AWS Shield SDK has been updated in order to support Elastic IP address protections, the addition of AttackProperties objects in DescribeAttack responses, and a new GetSubscriptionState operation.
+* `service/storagegateway`: Updates service API and documentation
+  * AWS Storage Gateway now enables you to get notification when all your files written to your NFS file share have been uploaded to Amazon S3. Storage Gateway also enables guessing of the MIME type for uploaded objects based on file extensions.
+* `service/xray`: Updates service API, documentation, and paginators
+  * Added automatic pagination support for AWS X-Ray APIs in the SDKs that support this feature.
+
 Release v1.12.31 (2017-11-20)
 ===
 

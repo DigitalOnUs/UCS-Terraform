@@ -1,6 +1,7 @@
 package ucs
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
@@ -35,14 +36,14 @@ func TestAccUCSProfile(t *testing.T) {
 }
 
 func testAccCheckUCSProfileConfig() string {
-	return `
-	resource "ucs_service_profile" "test_server" {
+	return fmt.Sprintf(`
+		resource "ucs_service_profile" "test_server" {
   	name                     = "test_server"
-  	target_org               = "some-target-org"
+  	target_org               = "root-org"
   	service_profile_template = "some-service-profile-template"
   	vnic {
     	name  = "eth0"
     	cidr = "1.2.3.4/24"
   	}
-	}`
+	}`)
 }

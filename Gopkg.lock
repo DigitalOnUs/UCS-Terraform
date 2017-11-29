@@ -11,7 +11,7 @@
   branch = "update_ucs_client"
   name = "github.com/DigitalOnUS/terraform-provider-ucs"
   packages = ["ucsclient/ucsinternal"]
-  revision = "c3d352dcbd512893673dd2c839399ca085dde00a"
+  revision = "9c7df8c751a1b41a6c15efbd7ffc126d95666bb2"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
@@ -40,8 +40,8 @@
 [[projects]]
   name = "github.com/aws/aws-sdk-go"
   packages = ["aws","aws/awserr","aws/awsutil","aws/client","aws/client/metadata","aws/corehandlers","aws/credentials","aws/credentials/ec2rolecreds","aws/credentials/endpointcreds","aws/credentials/stscreds","aws/defaults","aws/ec2metadata","aws/endpoints","aws/request","aws/session","aws/signer/v4","internal/shareddefaults","private/protocol","private/protocol/query","private/protocol/query/queryutil","private/protocol/rest","private/protocol/restxml","private/protocol/xml/xmlutil","service/s3","service/sts"]
-  revision = "a32b1dcd091264b5dee7b386149b6cc3823395c9"
-  version = "v1.12.31"
+  revision = "5bcc0a238d880469f949fc7cd24e35f32ab80cbd"
+  version = "v1.12.36"
 
 [[projects]]
   branch = "master"
@@ -125,7 +125,7 @@
   branch = "master"
   name = "github.com/hashicorp/go-version"
   packages = ["."]
-  revision = "fc61389e27c71d120f87031ca8c88a3428f372dd"
+  revision = "4fe82ae3040f80a03d04d2cccb5606a626b8e1ee"
 
 [[projects]]
   branch = "master"
@@ -178,13 +178,13 @@
   branch = "master"
   name = "github.com/micdoher/GoUtils"
   packages = ["."]
-  revision = "799bb498431c1c2bc955951db51bbfdbd1d697bd"
+  revision = "cdc7ea1f1b8d2c64644bf6008f842cfef2c0c87f"
 
 [[projects]]
   branch = "master"
   name = "github.com/mitchellh/cli"
   packages = ["."]
-  revision = "65fcae5817c8600da98ada9d7edf26dd1a84837b"
+  revision = "33edc47170b5df54d2588696d590c5e20ee583fe"
 
 [[projects]]
   branch = "master"
@@ -256,31 +256,31 @@
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["bcrypt","blowfish","cast5","openpgp","openpgp/armor","openpgp/elgamal","openpgp/errors","openpgp/packet","openpgp/s2k"]
-  revision = "9f005a07e0d31d45e6656d241bb5c0f2efd4bc94"
+  revision = "94eea52f7b742c7cbe0b03b22f0c4c8631ece122"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context","html","html/atom","http2","http2/hpack","idna","internal/timeseries","lex/httplex","trace"]
-  revision = "9dfe39835686865bff950a07b394c12a98ddc811"
+  revision = "a8b9294777976932365dabb6640cf1468d95c70f"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "82aafbf43bf885069dc71b7e7c2f9d7a614d47da"
+  revision = "316e9227019baa6ea3f76ea21538bab101fd1182"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
   packages = ["collate","collate/build","internal/colltab","internal/gen","internal/tag","internal/triegen","internal/ucd","language","secure/bidirule","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable"]
-  revision = "88f656faf3f37f690df1a32515b479415e1a6769"
+  revision = "572a2b141f625f4360cf42a41a43622067e0510b"
 
 [[projects]]
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "891aceb7c239e72692819142dfca057bdcbfcb96"
+  revision = "7f0da29060c682909f650ad8ed4e515bd74fa12a"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -297,6 +297,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "81d77677d8f4b8337385f28012469a7139d271053bd69ecacac6a356ad7e895d"
+  inputs-digest = "8b4b12ffb18d6eb97baa9053cf07cd4e83f72b64f5257638722b51e3bcca2352"
   solver-name = "gps-cdcl"
   solver-version = 1
