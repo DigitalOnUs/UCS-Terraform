@@ -6,9 +6,9 @@ import (
 	"net"
 	"sync"
 
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucs/ipman"
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucsclient"
 	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/thetonymaster/ucsclient"
+	"github.com/thetonymaster/ucsclient/ipman"
 )
 
 type sessionCallback func(*ucsclient.UCSClient) error
@@ -83,7 +83,7 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 	}
 
 	vnics := d.Get("vnic").(*schema.Set).List()
-	fmt.Printf("vnics %+v\n", vnics)
+	fmt.Printf("[INFO] vnics %+v\n", vnics)
 	for _, item := range vnics {
 		vnic := item.(map[string]interface{})
 		sp.VNICs = append(sp.VNICs, ucsclient.VNIC{
@@ -103,20 +103,20 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 	err := withSession(c, func(client *ucsclient.UCSClient) error {
 		d.Partial(true)
 		if d.HasChange("name") {
-			client.Logger.Info("Creating Profile \"%s\" from template \"%s\"\n", sp.Name, sp.Template)
+			fmt.Printf("[INFO] Creating Profile \"%s\" from template \"%s\"\n", sp.Name, sp.Template)
 			created, err := client.CreateServiceProfile(sp)
 			if err != nil {
-				client.Logger.Warn("Failed to create profile \"%s\": %s\n", sp.Name, err)
+				fmt.Printf("[WARN] Failed to create profile \"%s\": %s\n", sp.Name, err)
 				return err
 			}
 
 			if !created {
-				err = errors.New("Failed to create service profile\n")
-				client.Logger.Error(err.Error())
+				err = errors.New("Failed to create service profile")
+				fmt.Printf("[ERROR] %s\n", err.Error())
 				return err
 			}
 
-			client.Logger.Info("Profile \"%s\" was created\n", sp.Name)
+			fmt.Printf("[INFO] Profile \"%s\" was created\n", sp.Name)
 			d.SetId(sp.Name) // tell Terraform that a profile was created. The existence of a non-blank ID is what tells Terraform that a profile was created
 			d.Set("dn", sp.DN())
 			d.SetPartial("name")
@@ -143,7 +143,7 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 		}
 
 		d.Partial(false)
-		client.Logger.Debug("Exiting resourceUcsServiceProfileCreate(...)\n")
+		fmt.Printf("[DEBUG] Exiting resourceUcsServiceProfileCreate(...)\n")
 		return nil
 	})
 
@@ -163,7 +163,7 @@ func resourceUcsServiceProfileRead(d *schema.ResourceData, meta interface{}) err
 	c := meta.(*ucsclient.UCSClient)
 
 	err := withSession(c, func(client *ucsclient.UCSClient) error {
-		client.Logger.Debug("Entering resourceUcsServiceProfileRead(...)\n")
+		fmt.Printf("[DEBUG] Entering resourceUcsServiceProfileRead(...)\n")
 
 		//1. Query the UCS for the profile
 		dn := d.Get("dn").(string)
@@ -197,7 +197,7 @@ func resourceUcsServiceProfileRead(d *schema.ResourceData, meta interface{}) err
 			"host": d.Get("vnic.0.ip").(string),
 		})
 
-		client.Logger.Debug("Exiting resourceUcsServiceProfileRead(...)\n")
+		fmt.Printf("[DEBUG] Exiting resourceUcsServiceProfileRead(...)\n")
 		return nil
 	})
 
@@ -211,8 +211,8 @@ func resourceUcsServiceProfileRead(d *schema.ResourceData, meta interface{}) err
 // Updates the Service Profile in UCS.
 func resourceUcsServiceProfileUpdate(d *schema.ResourceData, meta interface{}) error {
 	c := meta.(*ucsclient.UCSClient)
-	c.Logger.Debug("Entering resourceUcsServiceProfileUpdate(...)\n")
-	c.Logger.Debug("Exiting resourceUcsServiceProfileUpdate(...)\n")
+	fmt.Printf("[DEBUG] Entering resourceUcsServiceProfileUpdate(...)\n")
+	fmt.Printf("[DEBUG] Exiting resourceUcsServiceProfileUpdate(...)\n")
 	return resourceUcsServiceProfileRead(d, c)
 }
 
@@ -220,7 +220,7 @@ func resourceUcsServiceProfileUpdate(d *schema.ResourceData, meta interface{}) e
 func resourceUcsServiceProfileDelete(d *schema.ResourceData, meta interface{}) error {
 	c := meta.(*ucsclient.UCSClient)
 	return withSession(c, func(client *ucsclient.UCSClient) error {
-		client.Logger.Debug("Entering resourceUcsServiceProfileDelete(...)\n")
+		fmt.Printf("[DEBUG] Entering resourceUcsServiceProfileDelete(...)\n")
 
 		name := d.Id()
 		targetOrg := d.Get("target_org").(string)
@@ -234,7 +234,7 @@ func resourceUcsServiceProfileDelete(d *schema.ResourceData, meta interface{}) e
 		// Tell Terraform that the resource has been successfully destroyed
 		d.SetId("")
 
-		client.Logger.Debug("Exiting resourceUcsServiceProfileDelete(...)\n")
+		fmt.Printf("[DEBUG] Exiting resourceUcsServiceProfileDelete(...)\n")
 		return nil
 	})
 }

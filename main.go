@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucs"
+	"github.com/digitalonus/terraform-provider-ucs/ucs"
 	"github.com/hashicorp/terraform/plugin"
 )
 

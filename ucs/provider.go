@@ -1,9 +1,9 @@
 package ucs
 
 import (
-	"github.com/DigitalOnUs/terraform-provider-ucs/ucsclient"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
+	"github.com/thetonymaster/ucsclient"
 )
 
 func Provider() terraform.ResourceProvider {
