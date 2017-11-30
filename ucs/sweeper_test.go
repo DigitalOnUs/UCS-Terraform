@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/digitalonus/terraform-provider-ucs/ucsclient"
 	"github.com/hashicorp/terraform/helper/resource"
+	"github.com/thetonymaster/ucsclient"
 )
 
 func TestMain(m *testing.M) {
