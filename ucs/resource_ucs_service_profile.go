@@ -1,7 +1,6 @@
 package ucs
 
 import (
-	"errors"
 	"fmt"
 	"net"
 	"sync"
@@ -104,15 +103,9 @@ func resourceUcsServiceProfileCreate(d *schema.ResourceData, meta interface{}) e
 		d.Partial(true)
 		if d.HasChange("name") {
 			fmt.Printf("[INFO] Creating Profile \"%s\" from template \"%s\"\n", sp.Name, sp.Template)
-			created, err := client.CreateServiceProfile(sp)
+			err := client.CreateServiceProfile(sp)
 			if err != nil {
 				fmt.Printf("[WARN] Failed to create profile \"%s\": %s\n", sp.Name, err)
-				return err
-			}
-
-			if !created {
-				err = errors.New("Failed to create service profile")
-				fmt.Printf("[ERROR] %s\n", err.Error())
 				return err
 			}
 
