@@ -53,9 +53,9 @@ func testAccUCSCProfileDestroy(s *terraform.State) error {
 func testAccCheckUCSProfileConfig(r string) string {
 	return fmt.Sprintf(`
 resource "ucs_service_profile" "master-server" {
-  name                     = "Server 3"
+  name                     = "server-%s"
   target_org               = "org-root"
-  service_profile_template = "template-%s"
+  service_profile_template = "template-example"
   metadata {
     role             = "master"
     ansible_ssh_user = "root"
@@ -65,6 +65,5 @@ resource "ucs_service_profile" "master-server" {
     name  = "eth0"
     cidr = "1.2.3.4/24"
   }
-}
-`, r)
+}`, r)
 }

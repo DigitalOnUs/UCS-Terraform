@@ -233,7 +233,7 @@ func resourceUcsServiceProfileDelete(d *schema.ResourceData, meta interface{}) e
 }
 
 func fetchVnicsFromResourceData(d *schema.ResourceData) (ret []ucsclient.VNIC) {
-	vnics := d.Get("vnic").([]interface{})
+	vnics := d.Get("vnic").(*schema.Set).List()
 	for _, item := range vnics {
 		vnic := item.(map[string]interface{})
 		ret = append(ret, ucsclient.VNIC{
