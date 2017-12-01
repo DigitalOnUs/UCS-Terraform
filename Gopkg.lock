@@ -226,7 +226,7 @@
   branch = "master"
   name = "github.com/thetonymaster/ucsclient"
   packages = [".","ipman","ucsinternal"]
-  revision = "6c077b40670c8cd930348cfa2fedc2db93e9c451"
+  revision = "c7dd59660c9f38fe05565c3fd94bd719d38f0779"
 
 [[projects]]
   name = "github.com/ulikunitz/xz"
